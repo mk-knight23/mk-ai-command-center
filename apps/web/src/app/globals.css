@@ -1,0 +1,87 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg-base: 8 10 16;
+  --bg-surface: 15 18 28;
+  --bg-raised: 22 26 40;
+  --line: 148 163 184;
+  --ink: 226 232 240;
+  --ink-muted: 148 163 184;
+  --ink-faint: 100 116 139;
+  --accent: 56 189 248;
+  --accent-soft: 56 189 248;
+  --ok: 52 211 153;
+  --warn: 251 191 36;
+  --danger: 248 113 113;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  @apply bg-bg-base text-ink font-sans antialiased;
+  background-image:
+    radial-gradient(1200px 500px at 80% -10%, rgb(56 189 248 / 0.06), transparent),
+    radial-gradient(900px 400px at -10% 110%, rgb(52 211 153 / 0.05), transparent);
+  background-attachment: fixed;
+}
+
+* {
+  border-color: rgb(var(--line) / 0.14);
+}
+
+:focus-visible {
+  outline: 2px solid rgb(var(--accent) / 0.8);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background: rgb(var(--line) / 0.2);
+  border-radius: 8px;
+  border: 2px solid rgb(var(--bg-base));
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+@layer components {
+  .card {
+    @apply rounded-xl border border-line/15 bg-bg-surface/80 backdrop-blur-sm;
+  }
+  .card-raised {
+    @apply rounded-xl border border-line/15 bg-bg-raised/70;
+  }
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg border border-line/20 bg-bg-raised/60 px-3 py-1.5 text-sm font-medium text-ink transition-colors hover:bg-bg-raised disabled:cursor-not-allowed disabled:opacity-50;
+  }
+  .btn-primary {
+    @apply border-transparent bg-accent/90 text-slate-950 hover:bg-accent;
+  }
+  .btn-danger {
+    @apply border-transparent bg-danger/85 text-slate-950 hover:bg-danger;
+  }
+  .input {
+    @apply w-full rounded-lg border border-line/20 bg-bg-base/60 px-3 py-2 text-sm text-ink placeholder:text-ink-faint focus:border-accent/60 focus:outline-none;
+  }
+  .label {
+    @apply mb-1 block text-xs font-medium uppercase tracking-wide text-ink-muted;
+  }
+  .table-base {
+    @apply w-full text-left text-sm;
+  }
+  .table-base th {
+    @apply border-b border-line/15 px-3 py-2 text-xs font-semibold uppercase tracking-wide text-ink-muted;
+  }
+  .table-base td {
+    @apply border-b border-line/10 px-3 py-2 align-middle;
+  }
+}

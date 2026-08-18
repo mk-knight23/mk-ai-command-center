@@ -1,0 +1,47 @@
+version: "3.9"
+
+# Local / self-hosted deployment of MK AI Command Center.
+# Usage: docker compose up -d --build
+# Environment comes from .env (same file used for local dev). SQLite data is
+# persisted in a named volume shared between web and worker.
+
+services:
+  web:
+    build: .
+    image: mkcc:latest
+    command: pnpm --filter @mkcc/web start
+    ports:
+      - "3100:3100"
+    environment:
+      NODE_ENV: production
+      MKCC_DATA_DIR: /repo/data
+      PUBLIC_APP_URL: ${PUBLIC_APP_URL:-http://localhost:3100}
+    env_file:
+      - .env
+    volumes:
+      - mkcc-data:/repo/data
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "node", "-e", "fetch('http://localhost:3100/api/health').then(r=>{if(!r.ok)process.exit(1)}).catch(()=>process.exit(1))"]
+      interval: 30s
+      timeout: 5s
+      retries: 5
+      start_period: 20s
+
+  worker:
+    build: .
+    image: mkcc:latest
+    command: pnpm --filter @mkcc/worker start
+    environment:
+      NODE_ENV: production
+      MKCC_DATA_DIR: /repo/data
+    env_file:
+      - .env
+    volumes:
+      - mkcc-data:/repo/data
+    restart: unless-stopped
+    depends_on:
+      - web
+
+volumes:
+  mkcc-data:

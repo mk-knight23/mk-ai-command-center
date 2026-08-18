@@ -1,0 +1,22 @@
+{
+  "name": "mk-ai-command-center",
+  "version": "0.1.0",
+  "private": true,
+  "description": "MK AI Command Center — 24/7 AI automation command center with multi-agent orchestration, approvals, scheduling, and Telegram control plane.",
+  "scripts": {
+    "dev": "pnpm --parallel --filter @mkcc/web --filter @mkcc/worker dev",
+    "dev:web": "pnpm --filter @mkcc/web dev",
+    "dev:worker": "pnpm --filter @mkcc/worker dev",
+    "build": "pnpm -r build",
+    "lint": "pnpm -r lint",
+    "typecheck": "pnpm -r typecheck",
+    "test": "pnpm -r test",
+    "db:generate": "pnpm --filter @mkcc/db generate",
+    "db:migrate": "pnpm --filter @mkcc/db migrate",
+    "db:seed": "pnpm --filter @mkcc/db seed"
+  },
+  "engines": {
+    "node": ">=22.5"
+  },
+  "packageManager": "pnpm@11.12.0"
+}

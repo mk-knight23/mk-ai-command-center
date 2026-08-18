@@ -1,0 +1,14 @@
+node_modules
+.next
+.git
+data
+*.db
+*.db-wal
+*.db-shm
+*.tsbuildinfo
+coverage
+.env
+.env.local
+.env.*.local
+scratch
+docs
