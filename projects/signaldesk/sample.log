@@ -1,0 +1,12 @@
+Sep 14 12:32:26.114 INFO audio-forwarding User example.agent@example.test connected
+Sep 14 12:33:06.442 WARN audio-forwarding Ping Pong Monitor timeout, closing websocket
+Sep 14 12:47:55.018 INFO server user socket closed
+Sep 14 12:47:58.221 INFO server established connection
+Sep 14 13:47:59.604 INFO audio-forwarding User example.agent@example.test connected
+Sep 14 13:48:39.180 WARN audio-forwarding Ping Pong Monitor timeout, closing websocket
+Sep 14 13:52:10.445 INFO server Duplicate socket for client_id sample, closing
+Sep 14 16:05:11.884 INFO server Received stage CHECK_START_CALL on desktop node
+Sep 14 16:05:12.006 INFO server Received stage START_CALL on desktop node
+Sep 14 16:05:12.301 INFO processing NEW CALL ID sample
+Sep 14 16:12:38.901 WARN audio-forwarding Ping Pong Monitor timeout, closing websocket
+Sep 14 16:20:52.266 INFO server Received stage CHECK_START_CALL on desktop node
