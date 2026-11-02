@@ -1,0 +1,22 @@
+name: SignalDesk Python tests
+on:
+  pull_request:
+    paths:
+      - 'projects/signaldesk/**'
+      - '.github/workflows/signaldesk-tests.yml'
+  push:
+    paths:
+      - 'projects/signaldesk/**'
+      - '.github/workflows/signaldesk-tests.yml'
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: projects/signaldesk
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m unittest -v test_analyzer.py
